@@ -1,4 +1,4 @@
-import { ChangeEvent, useState, useEffect } from 'react';
+import { ChangeEvent, useState, useEffect, use } from 'react';
 import { ListItem } from './components/ListItem';
 import axios, { AxiosResponse } from 'axios';
 import type { User } from "./types/user";
@@ -18,6 +18,12 @@ export const App = () => {
     })
 
   }, []);
+
+  // console.log(user)
+
+  // user.map((index, user) => (
+  //   console.log(index, user)
+  // ))
 
 
   return (
