@@ -1,25 +1,39 @@
-import React from 'react';
-
+import { useState, useEffect } from 'react';
 import './App.css';
+import { ListItem } from './components/ListItem';
+import axios, { AxiosResponse } from 'axios';
 
-function App() {
+// ユーザー情報の型を定義
+type User = {
+  id: number;
+  name: string;
+  // 必要に応じて他のプロパティも追加
+};
+
+export const App = () => {
+  //取得したユーザ情報
+  const [users, setUsers] = useState<User[]>([]);
+
+  //画面表示時にユーザ情報取得
+  useEffect(() => {
+    axios.get("https://jsonplaceholder.typicode.com/users").then((res: AxiosResponse<User[]>) => {
+      setUsers(res.data);
+    })
+
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h2> ユーザログイン画面 </h2>
+      {users.map(user => (
+        <ListItem key={user.id} id={user.id} name={user.name} />
+      ))}
+      <p className="title">ユーザログイン画面</p>
+      <input placeholder="ユーザ名を入力" value="50" />
+      <button>入力</button>
     </div>
   );
-}
+};
+
 
 export default App;
