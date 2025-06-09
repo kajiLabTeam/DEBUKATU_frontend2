@@ -7,9 +7,6 @@ export const CalorieInput = () => {
 	const [mustCalorie, setMustCalorie] = useState("");//摂取しなければならないカロリー
 	const [eatCount, setEatCount,] = useState("");//食事回数(出力)
 
-
-
-
 	const onChangeCurrentCalorie = (e: ChangeEvent<HTMLInputElement>) => {
 		setCurrentCalorie(e.target.value);
 	};

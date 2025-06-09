@@ -3,9 +3,9 @@ import { ListItem } from './components/ListItem';
 import axios, { AxiosResponse } from 'axios';
 import type { User } from "./types/user";
 
-import { UserLogin } from './features/userLogin/UserLogin';
-import { WeightInput } from './features/weightInput/WeightInput';
-import { CalorieInput } from './features/calorieInput/CalorieInput';
+import * as userLogin from './features/userLogin/userLogin';
+import * as WeightInput from './features/weightInput/weightInput';
+import * as CalorieInput from './features/calorieInput/calorieInput';
 
 export const App = () => {
 
@@ -22,9 +22,9 @@ export const App = () => {
 
   return (
     <>
-      <UserLogin />
-      <WeightInput />
-      <CalorieInput />
+      <userLogin.UserLogin />
+      <WeightInput.WeightInput />
+      <CalorieInput.CalorieInput />
 
       {user.map(user => (
         <ListItem key={user.id} id={user.id} name={user.name} />
