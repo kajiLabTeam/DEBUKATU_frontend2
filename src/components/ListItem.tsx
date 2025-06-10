@@ -1,9 +1,8 @@
 import React from "react";
-type ListItemProps = {
-	id: number;
-	name: string;
-};
-export const ListItem = (props: ListItemProps) => {
+import type { User } from "../types/user";
+
+
+export const ListItem = (props: User) => {
 	const { id, name } = props
 	return (
 		<p>
