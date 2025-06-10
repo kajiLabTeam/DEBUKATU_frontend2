@@ -26,7 +26,7 @@ export const CalorieInput = () => {
 			<p className="title">カロリー入力画面</p>
 			<ul>
 				<span>現在のカロリー摂取量</span>
-				<input placeholder="100kcal" value={currentCalorie} onChange={onChangeCurrentCalorie} />
+				<input placeholder="100" value={currentCalorie} onChange={onChangeCurrentCalorie} />kcal
 				<button onClick={onClickMustCalorieCal}>計算</button>
 			</ul>
 			<ul>

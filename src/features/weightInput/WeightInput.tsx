@@ -36,15 +36,15 @@ export const WeightInput = () => {
 
 			<ul>
 				<li>現在の体重</li>
-				<input placeholder="40kg" value={currentWeight} onChange={onChangeCurrentWeight} />
+				<input placeholder="40" value={currentWeight} onChange={onChangeCurrentWeight} />kg
 			</ul>
 			<ul>
 				<li>理想の体重 </li>
-				<input placeholder="50kg" value={modelWeight} onChange={onChangeModelWeight} />
+				<input placeholder="50" value={modelWeight} onChange={onChangeModelWeight} />kg
 			</ul>
 			<ul>
 				<li>体重増加期間（日）</li>
-				<input placeholder="180日" value={lengthOfDays} onChange={onChangeLengthOfDays} />
+				<input placeholder="180" value={lengthOfDays} onChange={onChangeLengthOfDays} />日
 			</ul>
 
 			<button onClick={onClickCalorieCal}>計算</button>
