@@ -40,9 +40,9 @@ export const App = () => {
       {/* 全ページ共通のナビゲーション */}
       <nav style={navStyle}>
         <Link to="/userLogin" style={linkStyle}>ログイン</Link>
-        <Link to="/home" style={linkStyle}>ホーム</Link>
         <Link to="/modelWeightInput" style={linkStyle}>体重入力</Link>
         <Link to="/currentWeightInput" style={linkStyle}>カロリー入力</Link>
+        <Link to="/home" style={linkStyle}>ホーム</Link>
       </nav>
 
 
@@ -50,10 +50,9 @@ export const App = () => {
       <main>
         <Routes>
           <Route path="/userLogin" element={<UserLoginPage />} />
-          <Route path="/home" element={<HomePage />} />
           <Route path="/modelWeightInput" element={<ModelWeightInputPage />} />
           <Route path="/currentWeightInput" element={<CurrentWeightInput.CalorieInputPage />} />
-
+          <Route path="/home" element={<HomePage />} />
         </Routes>
       </main>
 
