@@ -40,8 +40,8 @@ export const App = () => {
       {/* 全ページ共通のナビゲーション */}
       <nav style={navStyle}>
         <Link to="/userLogin" style={linkStyle}>ログイン</Link>
-        <Link to="/modelWeightInput" style={linkStyle}>体重入力</Link>
-        <Link to="/currentWeightInput" style={linkStyle}>カロリー入力</Link>
+        <Link to="/modelWeightInput" style={linkStyle}>理想体重入力</Link>
+        <Link to="/currentWeightInput" style={linkStyle}>現在の体重入力</Link>
         <Link to="/home" style={linkStyle}>ホーム</Link>
       </nav>
 
