@@ -31,7 +31,7 @@ export const CalorieInput = () => {
 			</ul>
 			<ul>
 				<span>足りないカロリー("義務カロリー" - "現在のカロリー摂取量") </span>
-				<span> {mustCalorie} {currentCalorie}</span>
+				<span> {mustCalorie} {currentCalorie}</span>kcal
 			</ul>
 			<button onClick={onClickEatCount}>計算</button>
 			<ul>
