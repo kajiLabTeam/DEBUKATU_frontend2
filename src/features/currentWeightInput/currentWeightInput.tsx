@@ -2,7 +2,7 @@
 import { useState, ChangeEvent } from 'react';
 
 
-export const CalorieInput = () => {
+export const CurrentWeightInput = () => {
 	const [currentCalorie, setCurrentCalorie] = useState("");//現在の摂取カロリー
 	const [currentWeight, setCurrentWeight] = useState("");
 
@@ -20,8 +20,8 @@ export const CalorieInput = () => {
 
 	return (
 		<div className="calorie_input_area">
-			<h2>カロリー入力画面</h2>
-			<p className="title">カロリー入力画面</p>
+			<h2>現在体重の記録画面</h2>
+			<p className="title">現在体重の入力画面</p>
 
 			<ul>
 				<li>現在の体重</li>

@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from 'react';
 
-export const WeightInput = () => {
+export const ModelWeightInput = () => {
 
 
 	const [modelWeight, setModelWeight] = useState("");
@@ -25,8 +25,8 @@ export const WeightInput = () => {
 
 	return (
 		<div className="weight_input_area">
-			<h2>体重入力画面</h2>
-			<p className="title">体重入力画面</p>
+			<h2>理想体重の入力画面</h2>
+			<p className="title">理想体重入力画面</p>
 
 			<ul>
 				<li>理想の体重 </li>

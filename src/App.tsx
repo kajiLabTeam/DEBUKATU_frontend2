@@ -1,8 +1,8 @@
 import { Routes, Route, Link } from 'react-router';
 import { HomePage } from './pages/home';
 import { UserLoginPage } from './pages/userLogin';
-import { WeightInputPage } from './pages/weightInput';
-import { CalorieInputPage } from './pages/calorieInput';
+import { ModelWeightInputPage } from './pages/modelWeightInput';
+import * as CurrentWeightInput from './pages/currentWeight';
 
 
 import { ChangeEvent, useState, useEffect, use } from 'react';
@@ -41,8 +41,8 @@ export const App = () => {
       <nav style={navStyle}>
         <Link to="/userLogin" style={linkStyle}>ログイン</Link>
         <Link to="/home" style={linkStyle}>ホーム</Link>
-        <Link to="/weightInput" style={linkStyle}>体重入力</Link>
-        <Link to="/calorieInput" style={linkStyle}>カロリー入力</Link>
+        <Link to="/modelWeightInput" style={linkStyle}>体重入力</Link>
+        <Link to="/currentWeightInput" style={linkStyle}>カロリー入力</Link>
       </nav>
 
 
@@ -51,8 +51,8 @@ export const App = () => {
         <Routes>
           <Route path="/userLogin" element={<UserLoginPage />} />
           <Route path="/home" element={<HomePage />} />
-          <Route path="/weightInput" element={<WeightInputPage />} />
-          <Route path="/calorieInput" element={<CalorieInputPage />} />
+          <Route path="/modelWeightInput" element={<ModelWeightInputPage />} />
+          <Route path="/currentWeightInput" element={<CurrentWeightInput.CalorieInputPage />} />
 
         </Routes>
       </main>
