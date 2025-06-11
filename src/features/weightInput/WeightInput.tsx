@@ -4,6 +4,7 @@ export const WeightInput = () => {
 	const [currentWeight, setCurrentWeight] = useState("");
 	const [modelWeight, setModelWeight] = useState("");
 	const [lengthOfDays, setLengthOfDays] = useState("");
+	const [mustCalorie, setMustCalorie] = useState("");
 
 
 	const onChangeCurrentWeight = (e: ChangeEvent<HTMLInputElement>) => {
@@ -19,6 +20,9 @@ export const WeightInput = () => {
 		setLengthOfDays(e.target.value);
 	};
 
+	const onChangeMustCalorie = (e: ChangeEvent<HTMLInputElement>) => {
+		setMustCalorie(e.target.value);
+	};
 	//計算ボタンPush
 	const onClickCalorieCal = () => {
 		if (currentWeight === "" || modelWeight === "" || lengthOfDays === "") return;
@@ -32,20 +36,21 @@ export const WeightInput = () => {
 
 			<ul>
 				<li>現在の体重</li>
-				<input placeholder="40kg" value={currentWeight} onChange={onChangeCurrentWeight} />
+				<input placeholder="40" value={currentWeight} onChange={onChangeCurrentWeight} />kg
 			</ul>
 			<ul>
 				<li>理想の体重 </li>
-				<input placeholder="50kg" value={modelWeight} onChange={onChangeModelWeight} />
+				<input placeholder="50" value={modelWeight} onChange={onChangeModelWeight} />kg
 			</ul>
 			<ul>
 				<li>体重増加期間（日）</li>
-				<input placeholder="180日" value={lengthOfDays} onChange={onChangeLengthOfDays} />
+				<input placeholder="180" value={lengthOfDays} onChange={onChangeLengthOfDays} />日
 			</ul>
 
 			<button onClick={onClickCalorieCal}>計算</button>
 			<ul>
 				<span>理想の体重までのカロリー摂取量</span>
+				<span>{mustCalorie} </span>
 			</ul>
 		</div>
 	);

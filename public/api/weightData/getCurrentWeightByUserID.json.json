@@ -1,0 +1,14 @@
+[
+	{
+		"weight_id": 1,
+		"model_id": 1,
+		"current_weight": 40,
+		"created_date": "2025-06-05"
+	},
+	{
+		"weight_id": 2,
+		"model_id": 1,
+		"current_weight": 45,
+		"created_date": "2025-06-05"
+	}
+]
