@@ -1,0 +1,18 @@
+[
+    {
+        "calorie_id": 1,
+        "weight_id": 1,
+        "model_id": 1,
+        "must_calorie": 3000,
+        "current_calorie": 2000,
+        "created_date": "2025-06-05"
+    },
+    {
+        "calorie_id": 2,
+        "weight_id": 1,
+        "model_id": 1,
+        "must_calorie": 2500,
+        "current_calorie": 2000,
+        "created_date": "2025-08-05"
+    }
+]
