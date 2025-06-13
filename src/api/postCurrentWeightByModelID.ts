@@ -10,7 +10,7 @@ const apiClient = axios.create({
 //出力:
 // {weightId }
 export const MockPostCurrentWeightByUserID = async (userId: number, currentWeight: number, modelId: number): Promise<PostWeightResponse> => {
-	console.log(`(Mock) APCallI : userId=${userId}, currentWeight=${currentWeight}, modelId=${modelId}`);
+	console.log(`userId=${userId}, currentWeight=${currentWeight}, modelId=${modelId}`);
 	return { weight_id: 1, };
 }
 

@@ -12,6 +12,7 @@ const apiClient = axios.create({
 // }
 
 export const MockPostModelWeightByUserID = async (userId: number, weight: number, month: number): Promise<PostModelResponse> => {
+	console.log(`userId=${userId}, currentWeight=${weight},month=${month}`);
 	return { model_id: 4 };
 }
 
