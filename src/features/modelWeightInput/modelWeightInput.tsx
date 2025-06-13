@@ -34,7 +34,7 @@ export const ModelWeightInput = () => {
 			const weightNum = Number(modelWeight);
 			const monthNum = Number(lengthOfDays);
 			const response = await MockPostModelWeightByUserID(userId, weightNum, monthNum);
-			navigate(`/currentWeightInput/${user_id}"`)
+			navigate(`/weight/${user_id}"`)
 			console.log("APIからのレスポンス:", response);
 			alert("データの送信に成功しました！"); // 成功したことをユーザーに通知
 
