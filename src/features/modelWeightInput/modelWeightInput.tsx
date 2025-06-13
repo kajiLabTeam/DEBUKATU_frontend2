@@ -31,11 +31,9 @@ export const ModelWeightInput = () => {
 		setError(null);
 
 		try {
-			const weightNum = Number(modelWeight);
-			const monthNum = Number(lengthOfDays);
-			const response = await MockPostModelWeightByUserID(userId, weightNum, monthNum);
+			const response = await MockPostModelWeightByUserID(Number(user_id), Number(modelWeight), Number(lengthOfDays));
 			navigate(`/weight/${user_id}"`)
-			console.log(response.model_id);
+			console.log(response);
 		} catch (apiError) {
 			// API通信が失敗した場合の処理
 			console.error("APIエラー:", apiError);
