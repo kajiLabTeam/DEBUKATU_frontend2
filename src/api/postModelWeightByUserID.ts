@@ -16,7 +16,7 @@ export const MockPostModelWeightByUserID = async (userId: number | null, weight:
 	// 0.5秒待つことで、擬似的に通信時間をシミュレート
 	await new Promise(resolve => setTimeout(resolve, 500));
 	// 成功したかのようなレスポンスを返す
-	return { "response": "ok", };
+	return { "model_id": 4 };
 }
 
 // 本物のAPIを叩く関数

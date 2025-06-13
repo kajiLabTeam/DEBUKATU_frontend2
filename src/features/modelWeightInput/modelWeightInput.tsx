@@ -1,6 +1,5 @@
 import axios from 'axios';
 import { useState, ChangeEvent, useEffect } from 'react';
-// import { UserId } from '../../types/user';
 import { MockPostModelWeightByUserID } from '../../api/postModelWeightByUserID'
 import { useParams } from 'react-router';
 

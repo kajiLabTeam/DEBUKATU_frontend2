@@ -1,10 +1,15 @@
-
+import axios from 'axios';
 import { useState, ChangeEvent } from 'react';
-
+import { MockPostCurrentWeightByUserID } from '../../api/postCurrentWeightByModelID';
 
 export const CurrentWeightInput = () => {
+	const [userId, setUserId] = useState<number | null>(1);
+	const [modelId, setModelId] = useState<number>(1);
 	const [currentCalorie, setCurrentCalorie] = useState("");//現在の摂取カロリー
 	const [currentWeight, setCurrentWeight] = useState("");
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+
 
 	const onChangeCurrentWeight = (e: ChangeEvent<HTMLInputElement>) => {
 		setCurrentWeight(e.target.value);
@@ -13,8 +18,27 @@ export const CurrentWeightInput = () => {
 		setCurrentCalorie(e.target.value);
 	};
 
-	const onClickMustCalorieCal = () => {
+	const onClickMustCalorieCal = async () => {
 		if (currentWeight === "" || currentCalorie === "") return;
+		const currentWeightNum = Number(currentWeight);
+		// --- API通信処理
+		setLoading(true);
+		setError(null);
+
+		try {
+			const response = await MockPostCurrentWeightByUserID(userId, currentWeightNum, modelId);
+			console.log("APIからのレスポンス:", response);
+			alert("データの送信に成功しました！"); // 成功したことをユーザーに通知
+
+		} catch (apiError) {
+			// API通信が失敗した場合の処理
+			console.error("APIエラー:", apiError);
+			setError("データの送信に失敗しました。時間をおいて再度お試しください。");
+
+		} finally {
+			// 成功しても失敗しても、必ず最後に実行される処理
+			setLoading(false);
+		}
 		console.log({ currentWeight, currentCalorie });
 	};
 
