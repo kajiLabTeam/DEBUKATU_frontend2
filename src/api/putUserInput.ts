@@ -7,7 +7,6 @@ const apiClient = axios.create({
 });
 
 export const postUserInputMock = async (userName: string): Promise<PostUserResponse> => {
-  console.log('UserInput API');
   return { user_id: 25 }
 }
 
