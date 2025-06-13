@@ -1,5 +1,6 @@
 import { ChangeEvent, useState, useEffect, use } from 'react';
 import axios from 'axios';
+import { PostWeightResponse } from '../types/weight';
 
 const apiClient = axios.create({
 	baseURL: 'http://localhost:8080/api'
@@ -8,10 +9,9 @@ const apiClient = axios.create({
 
 //出力:
 // {weightId }
-export const MockPostCurrentWeightByUserID = async (userId: number | null, currentWeight: number, modelId: number) => {
+export const MockPostCurrentWeightByUserID = async (userId: number | null, currentWeight: number, modelId: number): Promise<PostWeightResponse> => {
 	console.log(`(Mock) API Call: userId=${userId}, currentWeight=${currentWeight}, modelId=${modelId}`);
-
-	return { "weight_id": 1, };
+	return { weight_id: 1, };
 }
 
 

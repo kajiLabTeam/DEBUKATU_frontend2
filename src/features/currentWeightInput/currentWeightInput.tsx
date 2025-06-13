@@ -28,9 +28,7 @@ export const CurrentWeightInput = () => {
 
 		try {
 			const response = await MockPostCurrentWeightByUserID(userId, currentWeightNum, modelId);
-			console.log("APIからのレスポンス:", response);
-			alert("データの送信に成功しました！"); // 成功したことをユーザーに通知
-
+			console.log(response.weight_id);
 		} catch (apiError) {
 			// API通信が失敗した場合の処理
 			console.error("APIエラー:", apiError);
@@ -40,7 +38,6 @@ export const CurrentWeightInput = () => {
 			// 成功しても失敗しても、必ず最後に実行される処理
 			setLoading(false);
 		}
-		console.log({ currentWeight, currentCalorie });
 	};
 
 	return (
