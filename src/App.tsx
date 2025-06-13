@@ -16,18 +16,6 @@ const linkStyle = {
 };
 
 export const App = () => {
-
-  // // 取得したユーザ情報
-  // const [user, setUser] = useState<User[]>([]);
-  // // 画面表示時にユーザ情報取得
-  // useEffect(() => {
-  //   axios.get("https://jsonplaceholder.typicode.com/users").then((res: AxiosResponse<User[]>) => {
-  //     setUser(res.data);
-  //   })
-
-  // }, []);
-
-
   return (
     <>
       {/* 全ページ共通のナビゲーション */}
@@ -44,14 +32,10 @@ export const App = () => {
         <Routes>
           <Route path="/userLogin" element={<UserLoginPage />} />
           <Route path="/modelWeightInput/:user_id" element={<ModelWeightInputPage />} />
-          <Route path="/currentWeightInput" element={<CurrentWeightInput.CalorieInputPage />} />
+          <Route path="/currentWeightInput/:user_id/" element={<CurrentWeightInput.CalorieInputPage />} />
           <Route path="/home" element={<HomePage />} />
         </Routes>
       </main>
-
-      {/* {user.map(user => (
-        <ListItem key={user.id} id={user.id} name={user.name} />
-      ))} */}
     </>
 
 

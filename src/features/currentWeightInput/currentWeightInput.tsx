@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useState, ChangeEvent } from 'react';
 import { MockPostCurrentWeightByUserID } from '../../api/postCurrentWeightByModelID';
-
+import { useParams } from 'react-router';
 export const CurrentWeightInput = () => {
 	const [userId, setUserId] = useState<number | null>(1);
 	const [modelId, setModelId] = useState<number>(1);
@@ -10,6 +10,7 @@ export const CurrentWeightInput = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 
+	const { user_id } = useParams()
 
 	const onChangeCurrentWeight = (e: ChangeEvent<HTMLInputElement>) => {
 		setCurrentWeight(e.target.value);
@@ -46,7 +47,10 @@ export const CurrentWeightInput = () => {
 		<div className="calorie_input_area">
 			<h2>現在体重の記録画面</h2>
 			<p className="title">現在体重の入力画面</p>
-
+			<ul>
+				<li>ユーザID</li>
+				<>{user_id}</>
+			</ul>
 			<ul>
 				<li>現在の体重</li>
 				<input placeholder="40" value={currentWeight} onChange={onChangeCurrentWeight} />kg

@@ -1,6 +1,6 @@
 import { ChangeEvent, useState, useEffect, use } from 'react';
 import axios from 'axios';
-
+import { PostModelResponse } from '../types/model';
 const apiClient = axios.create({
 	baseURL: 'http://localhost:8080/api'
 });
@@ -11,11 +11,7 @@ const apiClient = axios.create({
 // 	"response": "ok",
 // }
 
-export const MockPostModelWeightByUserID = async (userId: number | null, weight: number, month: number) => {
-	console.log(`(Mock) API Call: userId=${userId}, weight=${weight}, month=${month}`);
-	// 0.5秒待つことで、擬似的に通信時間をシミュレート
-	await new Promise(resolve => setTimeout(resolve, 500));
-	// 成功したかのようなレスポンスを返す
+export const MockPostModelWeightByUserID = async (userId: number | null, weight: number, month: number): Promise<PostModelResponse> => {
 	return { "model_id": 4 };
 }
 

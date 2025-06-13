@@ -2,6 +2,7 @@ import axios from 'axios';
 import { useState, ChangeEvent, useEffect } from 'react';
 import { MockPostModelWeightByUserID } from '../../api/postModelWeightByUserID'
 import { useParams } from 'react-router';
+import { useNavigate } from 'react-router';
 
 export const ModelWeightInput = () => {
 	const [userId, setUserId] = useState<number | null>(1);
@@ -9,9 +10,9 @@ export const ModelWeightInput = () => {
 	const [lengthOfDays, setLengthOfDays] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
+	const navigate = useNavigate();
 
 	const { user_id } = useParams()
-	console.log(user_id)
 
 	const onChangeModelWeight = (e: ChangeEvent<HTMLInputElement>) => {
 		setModelWeight(e.target.value);
@@ -25,18 +26,15 @@ export const ModelWeightInput = () => {
 	//計算ボタンPush
 	const onClickCalorieCal = async () => {
 		if (modelWeight === "" || lengthOfDays === "") return;
-
 		// --- API通信処理
 		setLoading(true);
 		setError(null);
 
 		try {
-			// 入力値は文字列なので、数値に変換してAPIに渡す
 			const weightNum = Number(modelWeight);
 			const monthNum = Number(lengthOfDays);
-
-
 			const response = await MockPostModelWeightByUserID(userId, weightNum, monthNum);
+			navigate(`/currentWeightInput/${user_id}"`)
 			console.log("APIからのレスポンス:", response);
 			alert("データの送信に成功しました！"); // 成功したことをユーザーに通知
 
