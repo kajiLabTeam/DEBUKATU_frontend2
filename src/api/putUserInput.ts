@@ -6,9 +6,9 @@ const apiClient = axios.create({
   baseURL: 'http://localhost:8080/api'
 });
 
-export const postUserInputMock = async(userName: string): Promise<PostUserResponse> => {
+export const postUserInputMock = async (userName: string): Promise<PostUserResponse> => {
   console.log('UserInput API');
-  return {id:25}
+  return { user_id: 25 }
 }
 
 // 本物のAPIを叩く関数

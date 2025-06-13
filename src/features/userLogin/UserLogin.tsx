@@ -22,7 +22,7 @@ export const UserLogin = () => {
 
 		// {"id": 1 }
 		const response = await postUserInputMock(userNameText);
-		navigate(`/modelWeightInput/${response.id}`)
+		navigate(`/modelWeightInput/${response.user_id}`)
 		console.log(response);
 		console.log(`${userNameText} さんがログインしました。`);
 		setUserNameText("");

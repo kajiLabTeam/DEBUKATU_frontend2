@@ -1,3 +1,3 @@
 export type PostUserResponse = {
-	id: number;
+	user_id: number;
 };
