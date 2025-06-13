@@ -1,18 +1,32 @@
 import { ChangeEvent, useState } from 'react';
+import { postUserInputMock } from '../../api/putUserInput';
+import { useNavigate } from 'react-router';
 
 export const UserLogin = () => {
 	const [userNameText, setUserNameText] = useState("");
-	//テキストボックス入力時に入力内容をStateに設定
+	const [loading, setLoading] = useState(false);
+	const [error, setError] = useState<string | null>(null);
+	const navigate = useNavigate();
+
 	const onChangeUserText = (e: ChangeEvent<HTMLInputElement>) => {
 		setUserNameText(e.target.value);
 	};
 
 	//入力ボタン押したら
-	const onClickInput = () => {
+	const onClickInput = async () => {
 		if (userNameText === "") return;
-
 		setUserNameText(userNameText);
-		// 実際にはここでログイン処理などを呼び出す
+		// --- API通信処理
+		setLoading(true);
+		setError(null);
+
+		// {
+		// 	"id": 1,
+		// }
+		const response = await postUserInputMock(userNameText);
+		// response.id
+		navigate(`/modelWeightInput/${response.id}`)
+		console.log(response);
 		console.log(`${userNameText} さんがログインしました。`);
 		setUserNameText("");
 	};
@@ -25,4 +39,4 @@ export const UserLogin = () => {
 			<button onClick={onClickInput}>入力</button>
 		</div >
 	)
-};
+}

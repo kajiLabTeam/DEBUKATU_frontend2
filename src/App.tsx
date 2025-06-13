@@ -4,13 +4,6 @@ import { UserLoginPage } from './pages/userLogin';
 import { ModelWeightInputPage } from './pages/modelWeightInput';
 import * as CurrentWeightInput from './pages/currentWeight';
 
-
-import { ChangeEvent, useState, useEffect, use } from 'react';
-import { ListItem } from './components/ListItem';
-import axios, { AxiosResponse } from 'axios';
-import type { User } from "./types/user";
-
-
 // ナビゲーション用の簡単なスタイル
 const navStyle = {
   padding: '1rem',
@@ -50,7 +43,7 @@ export const App = () => {
       <main>
         <Routes>
           <Route path="/userLogin" element={<UserLoginPage />} />
-          <Route path="/modelWeightInput" element={<ModelWeightInputPage />} />
+          <Route path="/modelWeightInput/:user_id" element={<ModelWeightInputPage />} />
           <Route path="/currentWeightInput" element={<CurrentWeightInput.CalorieInputPage />} />
           <Route path="/home" element={<HomePage />} />
         </Routes>
