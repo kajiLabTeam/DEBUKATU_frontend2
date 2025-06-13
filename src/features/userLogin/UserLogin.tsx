@@ -24,7 +24,6 @@ export const UserLogin = () => {
 		const response = await postUserInputMock(userNameText);
 		navigate(`/model/${response.user_id}`)
 		console.log(response);
-		console.log(`${userNameText} さんがログインしました。`);
 		setUserNameText("");
 	};
 
