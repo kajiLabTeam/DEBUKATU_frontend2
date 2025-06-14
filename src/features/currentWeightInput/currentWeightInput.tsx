@@ -3,7 +3,6 @@ import { useState, ChangeEvent } from 'react';
 import { MockPostCurrentWeightByUserID } from '../../api/postCurrentWeightByModelID';
 import { useParams } from 'react-router';
 export const CurrentWeightInput = () => {
-	const [userId, setUserId] = useState<number | null>(1);
 	const [modelId, setModelId] = useState<number>(1);
 	const [currentCalorie, setCurrentCalorie] = useState("");//現在の摂取カロリー
 	const [currentWeight, setCurrentWeight] = useState("");
@@ -21,16 +20,13 @@ export const CurrentWeightInput = () => {
 
 	const onClickMustCalorieCal = async () => {
 		if (currentWeight === "" || currentCalorie === "") return;
-		const currentWeightNum = Number(currentWeight);
 		// --- API通信処理
 		setLoading(true);
 		setError(null);
 
 		try {
-			const response = await MockPostCurrentWeightByUserID(userId, currentWeightNum, modelId);
-			console.log("APIからのレスポンス:", response);
-			alert("データの送信に成功しました！"); // 成功したことをユーザーに通知
-
+			const response = await MockPostCurrentWeightByUserID(Number(user_id), Number(currentWeight), modelId);
+			console.log(response);
 		} catch (apiError) {
 			// API通信が失敗した場合の処理
 			console.error("APIエラー:", apiError);
@@ -40,7 +36,6 @@ export const CurrentWeightInput = () => {
 			// 成功しても失敗しても、必ず最後に実行される処理
 			setLoading(false);
 		}
-		console.log({ currentWeight, currentCalorie });
 	};
 
 	return (
