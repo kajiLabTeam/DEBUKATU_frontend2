@@ -12,8 +12,12 @@ export class UserApiError extends Error {
     this.name = 'UserApiError';
   }
 }
+// const apiClient = axios.create({
+//   baseURL: '/api'
+// });
+
 const apiClient = axios.create({
-  baseURL: '/api'
+  baseURL: 'http://localhost:8090/api'
 });
 
 
@@ -24,7 +28,15 @@ export const postUserMock = async (userName: string): Promise<PostUserResponse> 
 // 本物のAPIを叩く関数
 export const postUser = async (userName: string): Promise<PostUserResponse> => {
   try {
-    const response = await apiClient.post<PostUserResponse>('/users', { userName });
+    const response = await apiClient.post<PostUserResponse>(
+      '/users',  // URLのパス部分
+      null,
+      {
+        params: {
+          name: userName
+        }
+      }
+    );
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

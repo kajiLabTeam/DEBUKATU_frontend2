@@ -30,7 +30,7 @@ export const App = () => {
       {/* メインコンテンツエリア */}
       <main>
         <Routes>
-          <Route path="/users" element={<UserLoginPage />} />
+          <Route path="/users/" element={<UserLoginPage />} />
           <Route path="/model/:user_id" element={<ModelWeightInputPage />} />
           <Route path="/weight/:user_id/" element={<CurrentWeightInput.CalorieInputPage />} />
           <Route path="/home" element={<HomePage />} />
