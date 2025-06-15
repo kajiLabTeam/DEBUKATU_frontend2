@@ -52,20 +52,3 @@ export const PostModelWeightByUserID = async (userId: number, weight: number, da
 	}
 };
 
-
-
-// // 本物のAPIを叩く関数
-// export const fetchPostModelWeightByUserID = async (userId: number, weight: number, month: number) => {
-// 	const url = 'model/${userId}';
-// 	const response = await apiClient.post(url, null, {
-// 		params: {
-// 			weight: weight,
-// 			month: month
-// 		}
-// 	});
-
-// 	return response.data;
-
-// };
-
-

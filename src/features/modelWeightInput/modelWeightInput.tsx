@@ -12,8 +12,8 @@ export const ModelWeightInput = () => {
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
 
-	// const { user_id } = useParams()
 	const { user_id: userIdStr } = useParams<{ user_id: string }>();
+
 
 	const onChangeModelWeight = (e: ChangeEvent<HTMLInputElement>) => {
 		setModelWeight(e.target.value);
@@ -39,7 +39,7 @@ export const ModelWeightInput = () => {
 		setLoading(true);
 		setError(null);
 		const response = await PostModelWeightByUserID(userId, Number(modelWeight), Number(days));
-		navigate(`/weight/${userId}"`)
+		navigate(`/weight/${userId}/${response.model_id}"`)
 		console.log(response);
 	};
 
