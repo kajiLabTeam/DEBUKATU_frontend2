@@ -29,7 +29,6 @@ export const ModelWeightInput = () => {
 			return;
 		}
 		if (modelWeight === "" || days === "") return;
-
 		//useParamsから取得した文字列のuser_idを数値に変換します。
 		const userId = parseInt(userIdStr, 10);
 		if (isNaN(userId)) {
@@ -39,7 +38,6 @@ export const ModelWeightInput = () => {
 		// --- API通信処理
 		setLoading(true);
 		setError(null);
-		console.log("user_id:", userId);
 		const response = await PostModelWeightByUserID(userId, Number(modelWeight), Number(days));
 		navigate(`/weight/${userId}"`)
 		console.log(response);
