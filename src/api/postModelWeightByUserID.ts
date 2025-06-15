@@ -2,7 +2,6 @@ import { ChangeEvent, useState, useEffect, use } from 'react';
 import axios from 'axios';
 import { PostModelResponse } from '../types/model';
 const apiClient = axios.create({
-
 	baseURL: 'http://localhost:8090/api'
 });
 
