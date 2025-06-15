@@ -3,12 +3,19 @@ import axios from 'axios';
 import { PostWeightResponse } from '../types/weight';
 
 const apiClient = axios.create({
-	baseURL: 'http://localhost:8080/api'
+	baseURL: 'http://localhost:8090/api'
 });
-//入力: userId ,currentWeight,modelId
 
-//出力:
-// {weightId }
+//** APIエラー種別の型定義 
+export type UserApiErrorType = 'NotFoundError' | 'InternalServerError' | 'UnexpectedError' | 'BadRequest';
+
+export class UserApiError extends Error {
+	constructor(public type: UserApiErrorType) {
+		super(`API Error: ${type}`);
+		this.name = 'UserApiError';
+	}
+}
+
 export const MockPostCurrentWeightByUserID = async (userId: number, currentWeight: number, modelId: number): Promise<PostWeightResponse> => {
 	console.log(`userId=${userId}, currentWeight=${currentWeight}, modelId=${modelId}`);
 	return { weight_id: 1, };
@@ -16,17 +23,31 @@ export const MockPostCurrentWeightByUserID = async (userId: number, currentWeigh
 
 
 // 本物のAPIを叩く関数
-export const fetchPostCurrentWeightByUserID = async (userId: number, currentWeight: number, modelId: number) => {
-	const url = 'currentWeightInput/${userId}';
-	const response = await apiClient.post(url, null, {
-		params: {
-			currentWeight: currentWeight,
-			modelId: modelId
+export const PostCurrentWeightByUserID = async (userId: number, modelId: number, current: number) => {
+	try {
+		const urlPath = `/weight/${userId}/${modelId}`;
+		const response = await apiClient.post<PostWeightResponse>(
+			urlPath,  // URLのパス部分
+			null,
+			{
+				params: {
+					current: current,
+				}
+			}
+		);
+		return response.data;
+	} catch (error) {
+		if (axios.isAxiosError(error)) {
+			const status = error.response?.status;
+			const errorMap: Record<number, UserApiErrorType> = {
+				400: 'BadRequest', // バリデーションエラーなど
+				404: 'NotFoundError',
+				500: 'InternalServerError',
+			};
+			throw new UserApiError(errorMap[status || 0] || 'UnexpectedError');
 		}
-	});
-
-	return response.data;
-
-};
-
-
+		// その他の予期せぬエラー
+		console.error("An unexpected error occurred:", error);
+		throw new UserApiError('UnexpectedError')
+	};
+}

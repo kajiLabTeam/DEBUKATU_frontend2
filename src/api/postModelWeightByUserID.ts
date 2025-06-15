@@ -2,7 +2,6 @@ import { ChangeEvent, useState, useEffect, use } from 'react';
 import axios from 'axios';
 import { PostModelResponse } from '../types/model';
 const apiClient = axios.create({
-
 	baseURL: 'http://localhost:8090/api'
 });
 
@@ -51,21 +50,4 @@ export const PostModelWeightByUserID = async (userId: number, weight: number, da
 		throw new UserApiError('UnexpectedError')
 	}
 };
-
-
-
-// // 本物のAPIを叩く関数
-// export const fetchPostModelWeightByUserID = async (userId: number, weight: number, month: number) => {
-// 	const url = 'model/${userId}';
-// 	const response = await apiClient.post(url, null, {
-// 		params: {
-// 			weight: weight,
-// 			month: month
-// 		}
-// 	});
-
-// 	return response.data;
-
-// };
-
 
