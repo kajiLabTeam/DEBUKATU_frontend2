@@ -1,5 +1,6 @@
 import { ChangeEvent, useState, useEffect, use } from 'react';
 import axios from 'axios';
+import { PostWeightResponse } from '../types/weight';
 
 const apiClient = axios.create({
 	baseURL: 'http://localhost:8080/api'
@@ -8,15 +9,14 @@ const apiClient = axios.create({
 
 //出力:
 // {weightId }
-export const MockPostCurrentWeightByUserID = async (userId: number | null, currentWeight: number, modelId: number) => {
-	console.log(`(Mock) API Call: userId=${userId}, currentWeight=${currentWeight}, modelId=${modelId}`);
-
-	return { "weight_id": 1, };
+export const MockPostCurrentWeightByUserID = async (userId: number, currentWeight: number, modelId: number): Promise<PostWeightResponse> => {
+	console.log(`userId=${userId}, currentWeight=${currentWeight}, modelId=${modelId}`);
+	return { weight_id: 1, };
 }
 
 
 // 本物のAPIを叩く関数
-export const fetchPostCurrentWeightByUserID = async (userId: number | null, currentWeight: number, modelId: number) => {
+export const fetchPostCurrentWeightByUserID = async (userId: number, currentWeight: number, modelId: number) => {
 	const url = 'currentWeightInput/${userId}';
 	const response = await apiClient.post(url, null, {
 		params: {

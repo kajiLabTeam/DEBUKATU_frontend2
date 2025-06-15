@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
-import { postUserInputMock } from '../../api/putUserInput';
 import { useNavigate } from 'react-router';
+import { postUser } from '../../api/putUserInput';
+import { postUserMock } from '../../api/putUserInput';
 
 export const UserLogin = () => {
 	const [userNameText, setUserNameText] = useState("");
@@ -21,10 +22,9 @@ export const UserLogin = () => {
 		setError(null);
 
 		// {"id": 1 }
-		const response = await postUserInputMock(userNameText);
-		navigate(`/modelWeightInput/${response.user_id}`)
+		const response = await postUser(userNameText);
+		navigate(`/model/${response.user_id}`)
 		console.log(response);
-		console.log(`${userNameText} さんがログインしました。`);
 		setUserNameText("");
 	};
 

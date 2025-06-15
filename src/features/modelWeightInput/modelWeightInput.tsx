@@ -31,24 +31,17 @@ export const ModelWeightInput = () => {
 		setError(null);
 
 		try {
-			const weightNum = Number(modelWeight);
-			const monthNum = Number(lengthOfDays);
-			const response = await MockPostModelWeightByUserID(userId, weightNum, monthNum);
-			navigate(`/currentWeightInput/${user_id}"`)
-			console.log("APIからのレスポンス:", response);
-			alert("データの送信に成功しました！"); // 成功したことをユーザーに通知
-
+			const response = await MockPostModelWeightByUserID(Number(user_id), Number(modelWeight), Number(lengthOfDays));
+			navigate(`/weight/${user_id}"`)
+			console.log(response);
 		} catch (apiError) {
 			// API通信が失敗した場合の処理
 			console.error("APIエラー:", apiError);
 			setError("データの送信に失敗しました。時間をおいて再度お試しください。");
-
 		} finally {
 			// 成功しても失敗しても、必ず最後に実行される処理
 			setLoading(false);
 		}
-		console.log({ modelWeight, lengthOfDays });
-
 	};
 
 	return (
