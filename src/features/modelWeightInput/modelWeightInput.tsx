@@ -1,54 +1,53 @@
 import axios from 'axios';
 import { useState, ChangeEvent, useEffect } from 'react';
 import { MockPostModelWeightByUserID } from '../../api/postModelWeightByUserID'
+import { PostModelWeightByUserID } from '../../api/postModelWeightByUserID';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router';
 
 export const ModelWeightInput = () => {
-	const [userId, setUserId] = useState<number | null>(1);
 	const [modelWeight, setModelWeight] = useState("");
-	const [lengthOfDays, setLengthOfDays] = useState("");
+	const [days, setDays] = useState("");
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
 
-	const { user_id } = useParams()
+	// const { user_id } = useParams()
+	const { user_id: userIdStr } = useParams<{ user_id: string }>();
 
 	const onChangeModelWeight = (e: ChangeEvent<HTMLInputElement>) => {
 		setModelWeight(e.target.value);
 	};
 
-	const onChangeLengthOfDays = (e: ChangeEvent<HTMLInputElement>) => {
-		setLengthOfDays(e.target.value);
+	const onChangeDays = (e: ChangeEvent<HTMLInputElement>) => {
+		setDays(e.target.value);
 	};
-
-
-	//計算ボタンPush
+	//決定ボタンPush
 	const onClickCalorieCal = async () => {
-		if (modelWeight === "" || lengthOfDays === "") return;
+		if (!userIdStr) {
+			setError("URLにユーザーIDが含まれていません。");
+			return;
+		}
+		if (modelWeight === "" || days === "") return;
+		//useParamsから取得した文字列のuser_idを数値に変換します。
+		const userId = parseInt(userIdStr, 10);
+		if (isNaN(userId)) {
+			setError("無効なユーザーIDです。");
+			return;
+		}
 		// --- API通信処理
 		setLoading(true);
 		setError(null);
-
-		try {
-			const response = await MockPostModelWeightByUserID(Number(user_id), Number(modelWeight), Number(lengthOfDays));
-			navigate(`/weight/${user_id}"`)
-			console.log(response);
-		} catch (apiError) {
-			// API通信が失敗した場合の処理
-			console.error("APIエラー:", apiError);
-			setError("データの送信に失敗しました。時間をおいて再度お試しください。");
-		} finally {
-			// 成功しても失敗しても、必ず最後に実行される処理
-			setLoading(false);
-		}
+		const response = await PostModelWeightByUserID(userId, Number(modelWeight), Number(days));
+		navigate(`/weight/${userId}"`)
+		console.log(response);
 	};
 
 	return (
 		<div className="weight_input_area">
 			<ul>
 				<li>ユーザID</li>
-				<>{user_id}</>
+				<>{userIdStr}</>
 			</ul>
 			<h2>理想体重の入力画面</h2>
 			<p className="title">理想体重入力画面</p>
@@ -58,8 +57,8 @@ export const ModelWeightInput = () => {
 				<input placeholder="50" value={modelWeight} onChange={onChangeModelWeight} />kg
 			</ul>
 			<ul>
-				<li>体重増加期間(月)</li>
-				<input placeholder="1" value={lengthOfDays} onChange={onChangeLengthOfDays} />月
+				<li>体重増加期間(日)</li>
+				<input placeholder="1" value={days} onChange={onChangeDays} />日
 			</ul>
 
 			<button onClick={onClickCalorieCal}>決定</button>
