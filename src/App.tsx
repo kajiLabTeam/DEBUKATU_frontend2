@@ -1,9 +1,8 @@
-import { Routes, Route, Link } from 'react-router';
+import { Routes, Route, Link, Navigate } from 'react-router';
 import { HomePage } from './pages/home';
 import { UserLoginPage } from './pages/userLogin';
 import { ModelWeightInputPage } from './pages/modelWeightInput';
 import * as CurrentWeightInput from './pages/currentWeight';
-
 // ナビゲーション用の簡単なスタイル
 const navStyle = {
   padding: '1rem',
@@ -30,9 +29,10 @@ export const App = () => {
       {/* メインコンテンツエリア */}
       <main>
         <Routes>
+          <Route path="/" element={<Navigate to="users" />} />
           <Route path="/users/" element={<UserLoginPage />} />
           <Route path="/model/:user_id" element={<ModelWeightInputPage />} />
-          <Route path="/weight/:user_id/" element={<CurrentWeightInput.CalorieInputPage />} />
+          <Route path="/weight/:user_id/:model_id" element={<CurrentWeightInput.CalorieInputPage />} />
           <Route path="/home" element={<HomePage />} />
         </Routes>
       </main>
