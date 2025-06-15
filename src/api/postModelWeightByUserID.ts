@@ -17,7 +17,7 @@ export class UserApiError extends Error {
 }
 
 export const MockPostModelWeightByUserID = async (userId: number, weight: number, days: number): Promise<PostModelResponse> => {
-	console.log(`userId=${userId}, currentWeight=${weight},month=${days}`);
+	console.log(`userId=${userId}, currentWeight=${weight},days=${days}`);
 	return { model_id: 4 };
 }
 
