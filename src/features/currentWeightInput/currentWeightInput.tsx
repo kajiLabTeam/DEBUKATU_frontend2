@@ -30,7 +30,7 @@ export const CurrentWeightInput = () => {
 		setLoading(true);
 		setError(null);
 		const response = await PostCurrentWeightByUserID(Number(userIdStr), modelId, Number(currentWeight),);
-		navigate(`/home`)
+		navigate(`/home/${userIdStr}`)
 		console.log(response);
 
 	};
