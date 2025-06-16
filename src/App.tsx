@@ -33,7 +33,7 @@ export const App = () => {
           <Route path="/users/" element={<UserLoginPage />} />
           <Route path="/model/:user_id" element={<ModelWeightInputPage />} />
           <Route path="/weight/:user_id/:model_id" element={<CurrentWeightInput.CalorieInputPage />} />
-          <Route path="/home" element={<HomePage />} />
+          <Route path="/home/:user_id" element={<HomePage />} />
         </Routes>
       </main>
     </>
