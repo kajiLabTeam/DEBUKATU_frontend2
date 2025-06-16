@@ -39,7 +39,7 @@ export const ModelWeightInput = () => {
 		setLoading(true);
 		setError(null);
 		const response = await PostModelWeightByUserID(userId, Number(modelWeight), Number(days));
-		navigate(`/weight/${userId}/${response.model_id}"`)
+		navigate(`/weight/${userId}/${response.model_id}`)
 		console.log(response);
 	};
 

@@ -29,7 +29,7 @@ export const CurrentWeightInput = () => {
 		// --- API通信処理
 		setLoading(true);
 		setError(null);
-		const response = await PostCurrentWeightByUserID(Number(userIdStr), modelId, Number(currentWeight),);
+		const response = await PostCurrentWeightByUserID(Number(userIdStr), Number(modelIdStr), Number(currentWeight),);
 		navigate(`/home/${userIdStr}`)
 		console.log(response);
 
