@@ -58,7 +58,7 @@ export const ModelWeightInput = () => {
 			</ul>
 			<ul>
 				<li>体重増加期間(日)</li>
-				<input placeholder="1" value={days} onChange={onChangeDays} />日
+				<input placeholder="100" value={days} onChange={onChangeDays} />日
 			</ul>
 
 			<button onClick={onClickCalorieCal}>決定</button>
