@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router';
+import { Link, Navigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getMustCalorie } from '../caloriePerDay/userIdToMustCalorie';
 import { getCurrentModel } from '../../api/getCurrentModelData';
@@ -11,11 +11,11 @@ export const Home = () => {
 	const [modelId, setModelId] = useState<string | null>(null);
 	const [error, setError] = useState<string | null>(null);
 
+	if (!userIdStr) {
+		return <Navigate to="/users" replace />;
+	}
+
 	useEffect(() => {
-		if (!userIdStr) {
-			setError("ユーザーIDがURLに含まれていません");
-			return;
-		}
 		const fetchData = async () => {
 			try {
 				const cal = await getMustCalorie(userIdStr);
