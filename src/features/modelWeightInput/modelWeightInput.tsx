@@ -4,6 +4,7 @@ import { MockPostModelWeightByUserID } from '../../api/postModelWeightByUserID'
 import { PostModelWeightByUserID } from '../../api/postModelWeightByUserID';
 import { useParams } from 'react-router';
 import { useNavigate } from 'react-router';
+import styles from './modelWeightInput.module.css';
 
 export const ModelWeightInput = () => {
 	const [modelWeight, setModelWeight] = useState("");
@@ -44,24 +45,37 @@ export const ModelWeightInput = () => {
 	};
 
 	return (
-		<div className="weight_input_area">
-			<ul>
-				<li>ユーザID</li>
-				<>{userIdStr}</>
-			</ul>
-			<h2>理想体重の入力画面</h2>
-			<p className="title">理想体重入力画面</p>
+		<div className="container">
+			<main>
+				<div className={styles.formContent}>
+					{/* エラーがあれば表示する */}
+					{error && <p className={styles.errorMessage}>{error}</p>}
 
-			<ul>
-				<li>理想の体重 </li>
-				<input placeholder="50" value={modelWeight} onChange={onChangeModelWeight} />kg
-			</ul>
-			<ul>
-				<li>体重増加期間(日)</li>
-				<input placeholder="100" value={days} onChange={onChangeDays} />日
-			</ul>
+					{/* 理想の体重入力フォーム */}
+					<WeightInputRow
+						label="理想の体重"
+						id="idealWeight"
+						placeholder="50"
+						value={modelWeight}
+						onChange={(e) => setModelWeight(e.target.value)}
+						unit="kg"
+						isDisabled={loading}
+					/>
 
-			<button onClick={onClickCalorieCal}>決定</button>
-		</div>
+					{/* 体重増加期間入力フォーム */}
+					<WeightInputRow
+						label="体重増加期間"
+						id="period"
+						placeholder="6"
+						value={days}
+						onChange={(e) => setDays(e.target.value)}
+						unit="ヶ月"
+						isDisabled={loading}
+					/>
+				</div>
+
+				<button onClick={onClickCalorieCal}>決定</button>
+			</main >
+		</div >
 	);
 };

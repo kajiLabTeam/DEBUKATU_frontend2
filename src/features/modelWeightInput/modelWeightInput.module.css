@@ -1,0 +1,119 @@
+/* ヘッダーは既存のままでも良いですが、他画面と統一感を出すなら共通化を推奨します */
+.header {
+  background-color: #5a5a5a;
+  color: white;
+  padding: 12px 20px;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* フォーム全体のコンテナ */
+.formContent {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  /* 各入力項目間のスペース */
+  padding: 25px;
+}
+
+/* 各行のスタイル（ラベルと入力欄） */
+.formRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.label {
+  color: #ffffff;
+  /* 親要素の main から継承されますが、明示的に指定 */
+  font-size: 1rem;
+  margin-right: 15px;
+  flex-shrink: 0;
+  /* ラベルが縮まないようにする */
+}
+
+/* ★★★ここが重要★★★ */
+/* 入力欄と単位を囲むラッパー。ログイン画面の .inputField のスタイルに統一 */
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  /* 横幅を可能な限り広げる */
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  /* .inputField と統一 */
+  padding: 0 15px;
+  /* 左右の余白を .inputField と統一 */
+}
+
+/* ラッパーの中の実際の <input> 要素 */
+.input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  /* 縦の余白を .inputField と合わせる */
+  padding: 10px 5px 10px 0;
+  font-size: 16px;
+  /* .inputField と統一 */
+  text-align: right;
+  color: #333;
+}
+
+.input:focus {
+  outline: none;
+}
+
+/* 単位 (kg, ヶ月) */
+.unit {
+  color: #333;
+  font-size: 16px;
+  /* .inputField と統一 */
+}
+
+/* ボタンを配置するコンテナ */
+.buttonContainer {
+  padding: 0 25px 25px;
+  /* フォームのpaddingと合わせる */
+}
+
+/* ★★★ここが重要★★★ */
+/* 決定ボタン。ログイン画面の .loginButton のスタイルに統一 */
+.submitButton {
+  width: 100%;
+  /* 親要素いっぱいに広げる */
+  background-color: #007bff;
+  /* .loginButton の青色に統一 */
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  /* ボタンの文字を太字に */
+  text-align: center;
+  transition: background-color 0.2s ease-in-out;
+  box-sizing: border-box;
+}
+
+/* ホバー、アクティブ、無効時のスタイルも .loginButton と統一 */
+.submitButton:hover {
+  background-color: #0056b3;
+}
+
+.submitButton:active {
+  background-color: #004085;
+}
+
+.disabled {
+  background-color: #cccccc;
+  color: #666666;
+  cursor: not-allowed;
+}
+
+.submitButton.disabled:hover {
+  background-color: #cccccc;
+}
