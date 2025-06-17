@@ -47,7 +47,7 @@ export const UserLogin = () => {
 			setLoading(false);
 			return; // ログイン画面に留まる
 		}
-		navigate(`/model/${String(response.UserId)}`)
+		navigate(`/home/${String(response.UserId)}`)
 		console.log(response);
 		setUserIDText("");
 	}
