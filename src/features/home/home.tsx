@@ -46,7 +46,7 @@ export const Home = () => {
 
 		<div >
 			<ul>
-				<span>理想の体重までのカロリー摂取量</span>
+				<span>理想の体重までの1日の追加カロリー摂取量</span>
 				<span>{Math.floor(mustCalorie)}kcal</span>
 			</ul>
 
