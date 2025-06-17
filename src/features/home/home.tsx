@@ -1,28 +1,35 @@
-import { useParams } from 'react-router';
+import { Link, Navigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getMustCalorie } from '../caloriePerDay/userIdToMustCalorie';
+import { getCurrentModel } from '../../api/getCurrentModelData';
 
 
 export const Home = () => {
 	const { user_id: userIdStr } = useParams<{ user_id: string }>();
 
 	const [mustCalorie, setMustCalorie] = useState<number | null>(null);
+	const [modelId, setModelId] = useState<string | null>(null);
 	const [error, setError] = useState<string | null>(null);
 
-	useEffect(() => {
-		if (!userIdStr) {
-			setError("ユーザーIDがURLに含まれていません");
-			return;
-		}
+	if (!userIdStr) {
+		return <Navigate to="/users" replace />;
+	}
 
-		getMustCalorie(userIdStr)
-			.then((cal) => {
+	useEffect(() => {
+		const fetchData = async () => {
+			try {
+				const cal = await getMustCalorie(userIdStr);
 				setMustCalorie(cal);
-			})
-			.catch((err) => {
+
+				const model = await getCurrentModel(userIdStr);
+				setModelId(model.ModelId);
+			} catch (err) {
 				console.error(err);
-				setError("カロリーの取得に失敗しました");
-			});
+				setError("データの取得に失敗しました");
+			}
+		};
+
+		fetchData();
 	}, [userIdStr]);
 
 	if (error) {
@@ -39,14 +46,12 @@ export const Home = () => {
 
 		<div >
 			<ul>
-				<span>理想の体重までのカロリー摂取量</span>
+				<span>理想の体重までの1日の追加カロリー摂取量</span>
 				<span>{Math.floor(mustCalorie)}kcal</span>
 			</ul>
 
-			{/* <ul>
-				<span>追加の食事回数 </span>
-				<span>{eatCount !== null ? `${eatCount} 回` : ''}</span>
-			</ul> */}
+			<div><Link to={`/model/${userIdStr}`}>体重目標の入力へ</Link></div>
+			<div><Link to={`/weight/${userIdStr}/${modelId}`}>現在の体重の更新へ</Link></div>
 		</div >
 	);
 };

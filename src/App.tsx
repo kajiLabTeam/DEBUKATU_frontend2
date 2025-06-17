@@ -19,10 +19,10 @@ export const App = () => {
     <>
       {/* 全ページ共通のナビゲーション */}
       <nav style={navStyle}>
-        <Link to="/users" style={linkStyle}>ログイン</Link>
-        <Link to="/model" style={linkStyle}>理想体重入力</Link>
+        <Link to="/users" style={linkStyle}>ログアウト</Link>
+        {/* <Link to="/model" style={linkStyle}>理想体重入力</Link>
         <Link to="/weight" style={linkStyle}>現在の体重入力</Link>
-        <Link to="/home" style={linkStyle}>ホーム</Link>
+        <Link to="/home" style={linkStyle}>ホーム</Link> */}
       </nav>
 
 
