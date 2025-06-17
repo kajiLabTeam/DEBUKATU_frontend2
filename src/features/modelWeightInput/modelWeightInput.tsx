@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, ChangeEvent, useEffect } from 'react';
 import { MockPostModelWeightByUserID } from '../../api/postModelWeightByUserID'
 import { PostModelWeightByUserID } from '../../api/postModelWeightByUserID';
-import { useParams } from 'react-router';
+import { Navigate, useParams } from 'react-router';
 import { useNavigate } from 'react-router';
 
 export const ModelWeightInput = () => {
@@ -26,7 +26,7 @@ export const ModelWeightInput = () => {
 	const onClickCalorieCal = async () => {
 		if (!userIdStr) {
 			setError("URLにユーザーIDが含まれていません。");
-			return;
+			return <Navigate to="/users" replace />;
 		}
 		if (modelWeight === "" || days === "") return;
 		//useParamsから取得した文字列のuser_idを数値に変換します。

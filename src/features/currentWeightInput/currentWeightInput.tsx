@@ -2,7 +2,7 @@ import axios from 'axios';
 import { useState, ChangeEvent } from 'react';
 import { MockPostCurrentWeightByUserID } from '../../api/postCurrentWeightByModelID';
 import { PostCurrentWeightByUserID } from '../../api/postCurrentWeightByModelID';
-import { useParams } from 'react-router';
+import { Navigate, useParams } from 'react-router';
 import { useNavigate } from 'react-router';
 
 export const CurrentWeightInput = () => {
@@ -15,6 +15,10 @@ export const CurrentWeightInput = () => {
 
 	const { user_id: userIdStr } = useParams<{ user_id: string }>();
 	const { model_id: modelIdStr } = useParams<{ model_id: string }>();
+	if (!userIdStr) {
+		return <Navigate to="/users" replace />;
+	}
+
 
 	const onChangeCurrentWeight = (e: ChangeEvent<HTMLInputElement>) => {
 		setCurrentWeight(e.target.value);
