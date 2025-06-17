@@ -45,10 +45,10 @@ export const ModelWeightInput = () => {
 
 	return (
 		<div className="weight_input_area">
-			<ul>
+			{/* <ul>
 				<li>ユーザID</li>
 				<>{userIdStr}</>
-			</ul>
+			</ul> */}
 			<h2>理想体重の入力画面</h2>
 			<p className="title">理想体重入力画面</p>
 

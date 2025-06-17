@@ -43,12 +43,12 @@ export const CurrentWeightInput = () => {
 		<div className="calorie_input_area">
 			<h2>現在体重の記録画面</h2>
 			<p className="title">現在体重の入力画面</p>
-			<ul>
+			{/* <ul>
 				<li>ユーザID</li>
 				<>{userIdStr}</>
 				<li>モデルID</li>
 				<>{modelIdStr}</>
-			</ul>
+			</ul> */}
 			<ul>
 				<li>現在の体重</li>
 				<input placeholder="40" value={currentWeight} onChange={onChangeCurrentWeight} />kg
