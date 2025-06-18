@@ -3,6 +3,7 @@ import { HomePage } from './pages/home';
 import { UserLoginPage } from './pages/userLogin';
 import { ModelWeightInputPage } from './pages/modelWeightInput';
 import * as CurrentWeightInput from './pages/currentWeight';
+import { UserSignInPage } from './pages/userSignIn';
 // ナビゲーション用の簡単なスタイル
 const navStyle = {
   padding: '1rem',
@@ -31,6 +32,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Navigate to="users" />} />
           <Route path="/users/" element={<UserLoginPage />} />
+          <Route path='/users/input' element={<UserSignInPage />} />
           <Route path="/model/:user_id" element={<ModelWeightInputPage />} />
           <Route path="/weight/:user_id/:model_id" element={<CurrentWeightInput.CalorieInputPage />} />
           <Route path="/home/:user_id" element={<HomePage />} />
