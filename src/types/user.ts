@@ -5,5 +5,7 @@ export type PostUserResponse = {
 export type GetUserResponse = {
 	UserId: number;
 	Name: string;
+	Age: number;
+	Heigjt: string;
 	Deleted: boolean;
 };
