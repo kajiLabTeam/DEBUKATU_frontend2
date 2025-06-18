@@ -4,6 +4,7 @@ import { MockPostModelWeightByUserID } from '../../api/postModelWeightByUserID'
 import { PostModelWeightByUserID } from '../../api/postModelWeightByUserID';
 import { Navigate, useParams } from 'react-router';
 import { useNavigate } from 'react-router';
+import styles from './modelWeightInput.module.css';
 
 export const ModelWeightInput = () => {
 	const [modelWeight, setModelWeight] = useState("");

@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { postUser } from '../../api/putUserInput';
 import { getUser } from '../../api/getSpecificUser';
 import { GetUserResponse } from '../../types/user';
+import styles from './UserLogin.module.css';
 
 export const UserLogin = () => {
 	const [userNameText, setUserNameText] = useState("");
@@ -10,6 +11,12 @@ export const UserLogin = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
+
+	// disabled の状態に応じてクラス名を組み立てる
+	const buttonClasses = [
+		styles.loginButton, // 基本のボタンスタイル
+	].join(' '); // 配列をスペース区切りの文字列に変換
+
 
 	const onChangeUserText = (e: ChangeEvent<HTMLInputElement>) => {
 		setUserNameText(e.target.value);
@@ -40,6 +47,35 @@ export const UserLogin = () => {
 
 	return (
 		<div >
+<<<<<<< #25-CSSの作成
+			<h2> ユーザログイン画面 </h2>
+			<p className="title">ユーザ登録</p>
+			<div className={styles.inputContainer}>
+				<input
+					placeholder="ユーザ名を入力"
+					value={userNameText}
+					onChange={onChangeUserText}
+					className={styles.inputField}
+				/>
+				{/* ↓ button用のクラスを適用（buttonClasses変数は不要になります） */}
+				<button className={styles.loginButton} onClick={onClickInput}>
+					入力
+				</button>
+			</div>
+
+			<p className="title">ユーザログイン</p>
+			<div className={styles.inputContainer}>
+				<input
+					placeholder="ユーザIDを入力"
+					value={userIDText}
+					onChange={onChangeUserID}
+					className={styles.inputField}
+				/>
+				<button className={styles.loginButton} onClick={onClickLogin}>
+					入力
+				</button>
+			</div>
+=======
 			<div><Link to={`/users/input`}>ユーザ登録へ</Link></div>
 			<h2> ユーザログイン </h2>
 			<p className="title">ユーザ名</p>
@@ -47,6 +83,7 @@ export const UserLogin = () => {
 			<p className="title">パスワード</p>
 			<input placeholder="パスワードを入力" value={userPassText} onChange={onChangeUserPass} />
 			<button onClick={onClickLogin}>ログイン</button>
+>>>>>>> main
 		</div >
 	)
 }
