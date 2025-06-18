@@ -46,14 +46,31 @@ export const UserLogin = () => {
 	}
 
 	return (
-		<div >
-			<div><Link to={`/users/input`}>ユーザ登録へ</Link></div>
-			<h2> ユーザログイン </h2>
-			<p className="title">ユーザ名</p>
-			<input placeholder="ユーザ名を入力" value={userNameText} onChange={onChangeUserText} />
-			<p className="title">パスワード</p>
-			<input placeholder="パスワードを入力" value={userPassText} onChange={onChangeUserPass} />
-			<button onClick={onClickLogin}>ログイン</button>
+		<div className={styles.userLogin}>
+			<header className={styles.userLoginHeader}>
+				DEBUKATU
+			</header>
+
+			<main className={styles.mainContent}>
+				<div className={styles.weightPlanCard}>
+					<p className="title">ユーザログイン</p>
+					<div className={styles.inputGroup}>
+						<span className={styles.label}>ユーザ名</span>
+						<input placeholder="ユーザ名を入力" value={userNameText} onChange={onChangeUserText} />
+					</div>
+					<div className={styles.inputGroup}>
+						<span className={styles.label}>パスワード</span>
+						<input placeholder="パスワードを入力" value={userPassText} onChange={onChangeUserPass} />
+					</div>
+					<button onClick={onClickLogin}>ログイン</button>
+
+				</div>
+			</main>
+
+			<footer>
+				<div><Link to={`/users/input`}>ユーザ登録へ</Link></div>
+			</footer>
 		</div >
+
 	)
 }

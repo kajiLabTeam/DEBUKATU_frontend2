@@ -1,60 +1,64 @@
-/* ★追加: 入力欄とボタンを囲むコンテナのスタイル */
-.inputContainer {
+/* Home.module.css (例) */
+
+/* 全体のコンテナ（画像全体を囲む部分） */
+.userLoginContainer {
+	background-color: #e7f5ed;
+	/* 全体の背景色 */
+	min-height: 100vh;
 	display: flex;
-	/* 要素を横並びにする */
+	flex-direction: column;
 	align-items: center;
-	/* 要素の縦方向の位置を中央に揃える */
-	gap: 8px;
-	/* 入力欄とボタンの間の隙間 */
+	/* 水平中央寄せ */
+	padding: 0;
+	/* bodyのpaddingなどと調整 */
 }
 
-/* ★追加: 入力欄のスタイル */
-.inputField {
-	flex-grow: 1;
-	/* コンテナの余白を埋めるように幅を自動調整 */
-	padding: 10px 15px;
-	/* ボタンと縦のpaddingを合わせる */
-	font-size: 16px;
-	/* ボタンとフォントサイズを合わせる */
-	border: 1px solid #ccc;
-	border-radius: 5px;
-	box-sizing: border-box;
-	/* paddingとborderを要素の幅と高さに含める */
-}
-
-/* ログインボタンのスタイル（調整） */
-.loginButton {
-	width: auto;
-	background-color: #007bff;
+/* ヘッダーのスタイル */
+.userLoginHeader {
+	background-color: #2c7a51;
+	/* 濃い緑色の背景 */
 	color: white;
-	padding: 10px 15px;
-	border: none;
-	border-radius: 5px;
-	cursor: pointer;
-	font-size: 16px;
-	transition: background-color 0.2s ease-in-out;
-	flex-shrink: 0;
+	width: 100%;
+	padding: 15px 0;
+	text-align: center;
+	font-size: 1.2em;
+	font-weight: bold;
+	border-bottom-left-radius: 10px;
+	border-bottom-right-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	margin-bottom: 20px;
+	/* メインコンテンツとの間隔 */
+}
+
+/* メインコンテンツエリア */
+.mainContent {
+	flex-grow: 1;
+	/* 残りのスペースを占有 */
+	width: 100%;
+	max-width: 400px;
+	/* スマートフォンサイズに制限 */
+	padding: 0 20px;
+	/* 左右の余白 */
 	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	/* 各カード間のスペース */
 }
 
-/* ボタンにマウスが乗った時のスタイル */
-.loginButton:hover {
-	background-color: #0056b3;
-}
-
-/* ボタンがクリックされた時のスタイル */
-.loginButton:active {
-	background-color: #004085;
-}
-
-/* 無効時のスタイル */
-.disabled {
-	background-color: #cccccc;
-	color: #666666;
-	cursor: not-allowed;
-}
-
-/* 無効時にhoverしても色が変わらないようにする */
-.loginButton.disabled:hover {
-	background-color: #cccccc;
+/* 体重増加計画のメインカード */
+.weightPlanCard {
+	background-color: white;
+	border-radius: 15px;
+	/* 角を丸く */
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+	/* 影 */
+	padding: 20px;
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	/* 各項目間のスペース */
+	color: #333;
+	/* テキスト色を暗めに */
+	font-size: 1.1em;
 }
