@@ -17,7 +17,8 @@ export class UserApiError extends Error {
 // });
 
 const apiClient = axios.create({
-  baseURL: 'http://localhost:8090/api'
+  // baseURL: 'http://localhost:8090/api'
+  baseURL: 'https://debukatu_backend.kajilab.dev/api'
 });
 
 

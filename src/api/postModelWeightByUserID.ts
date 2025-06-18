@@ -2,7 +2,8 @@ import { ChangeEvent, useState, useEffect, use } from 'react';
 import axios from 'axios';
 import { PostModelResponse } from '../types/model';
 const apiClient = axios.create({
-	baseURL: 'http://localhost:8090/api'
+	// baseURL: 'http://localhost:8090/api'
+	baseURL: 'https://debukatu_backend.kajilab.dev/api'
 });
 
 //** APIエラー種別の型定義 
