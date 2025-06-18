@@ -21,13 +21,14 @@ const apiClient = axios.create({
 });
 
 // 本物のAPIを叩く関数
-export const getUser = async (userId: string): Promise<GetUserResponse> => {
+export const getUser = async (userName: string, userPass: string): Promise<GetUserResponse> => {
     try {
         const response = await apiClient.get(
             '/users',  // URLのパス部分
             {
                 params: {
-                    id: userId
+                    name: userName,
+                    password: userPass
                 }
             }
         );
