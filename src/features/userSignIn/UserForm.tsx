@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { postUser } from '../../api/putUserInput';
+import styles from './userForm.module.css';
 
 export const UserForm = () => {
     const [userNameText, setUserNameText] = useState("");
@@ -43,18 +44,37 @@ export const UserForm = () => {
 
 
     return (
-        <div >
-            <div><Link to={`/users`}>戻る</Link></div>
-            <p className="title">ユーザ登録</p>
-            <p className="title">ユーザ名</p>
-            <input placeholder="ユーザ名を入力" value={userNameText} onChange={onChangeUserNameText} />
-            <p className="title">パスワード</p>
-            <input placeholder="パスワードを入力" value={userPassText} onChange={onChangeUserPassText} />
-            <p className="title">年齢</p>
-            <input placeholder="年齢を入力" value={userAgeText} onChange={onChangeUserAgeText} />才
-            <p className="title">身長</p>
-            <input placeholder="身長を入力" value={userHeightText} onChange={onChangeUserHeightText} />cm
-            <button onClick={onClickInput}>登録</button>
+        <div className={styles.userForm}>
+
+            <header className={styles.userFormHeader}>
+                DEBUKATU
+            </header>
+            <main className={styles.mainContent}>
+                <div className={styles.weightPlanCard}>
+                    <p className="title">ユーザ登録</p>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>ユーザ名</span>
+                        <input placeholder="ユーザ名を入力" value={userNameText} onChange={onChangeUserNameText} />
+                    </div>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>パスワード</span>
+                        <input placeholder="パスワードを入力" value={userPassText} onChange={onChangeUserPassText} />
+                    </div>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>年齢</span>
+                        <input placeholder="年齢を入力" value={userAgeText} onChange={onChangeUserAgeText} />才
+                    </div>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>身長</span>
+                        <input placeholder="身長を入力" value={userHeightText} onChange={onChangeUserHeightText} />cm
+                    </div>
+                    <button onClick={onClickInput}>登録</button>
+                </div>
+            </main>
+            <footer>
+                <div><Link to={`/users`}>戻る</Link></div>
+            </footer>
+
         </div >
     )
 }
