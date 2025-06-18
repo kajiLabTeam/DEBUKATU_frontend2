@@ -3,7 +3,8 @@ import axios from 'axios';
 import { PostWeightResponse } from '../types/weight';
 
 const apiClient = axios.create({
-	baseURL: 'http://localhost:8090/api'
+	// baseURL: 'http://localhost:8090/api'
+	baseURL: 'https://debukatu_backend.kajilab.dev/api'
 });
 
 //** APIエラー種別の型定義 
