@@ -4,7 +4,7 @@ import { MockPostModelWeightByUserID } from '../../api/postModelWeightByUserID'
 import { PostModelWeightByUserID } from '../../api/postModelWeightByUserID';
 import { Navigate, useParams } from 'react-router';
 import { useNavigate } from 'react-router';
-import styles from './modelWeightInput.module.css';
+import styles from './model.module.css'
 
 export const ModelWeightInput = () => {
 	const [modelWeight, setModelWeight] = useState("");
@@ -45,24 +45,29 @@ export const ModelWeightInput = () => {
 	};
 
 	return (
-		<div className="weight_input_area">
-			{/* <ul>
-				<li>ユーザID</li>
-				<>{userIdStr}</>
-			</ul> */}
-			<h2>理想体重の入力画面</h2>
-			<p className="title">理想体重入力画面</p>
+		<div className={styles.modelContainer}>
+			<header className={styles.modelHeader}>
+				DEBUKATU
+			</header>
+			<main className={styles.mainContent}>
+				<div className={styles.weightPlanCard}>
+					<p className="title">理想体重の入力</p>
 
-			<ul>
-				<li>理想の体重 </li>
-				<input placeholder="50" value={modelWeight} onChange={onChangeModelWeight} />kg
-			</ul>
-			<ul>
-				<li>体重増加期間(日)</li>
-				<input placeholder="100" value={days} onChange={onChangeDays} />日
-			</ul>
+					<div className={styles.inputGroup}>
+						<span className={styles.label}>理想体重</span>
+						<input placeholder="50" value={modelWeight} onChange={onChangeModelWeight} />kg
+					</div>
+					<div className={styles.inputGroup}>
+						<span className={styles.label}>体重増加期間(日)</span>
+						<input placeholder="100" value={days} onChange={onChangeDays} />日
+					</div>
+					<button onClick={onClickCalorieCal}>決定</button>
+				</div>
+			</main >
 
-			<button onClick={onClickCalorieCal}>決定</button>
-		</div>
+			<footer>
+
+			</footer>
+		</div >
 	);
 };
