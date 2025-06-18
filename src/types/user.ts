@@ -7,5 +7,6 @@ export type GetUserResponse = {
 	Name: string;
 	Age: number;
 	Heigjt: string;
+	Gender: string;
 	Deleted: boolean;
 };
