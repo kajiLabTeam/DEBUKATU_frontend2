@@ -17,17 +17,19 @@ export class UserApiError extends Error {
 // });
 
 const apiClient = axios.create({
-    baseURL: 'http://localhost:8090/api'
+    // baseURL: 'http://localhost:8090/api'
+    baseURL: 'https://debukatu_backend.kajilab.dev/api'
 });
 
 // 本物のAPIを叩く関数
-export const getUser = async (userId: string): Promise<GetUserResponse> => {
+export const getUser = async (userName: string, userPass: string): Promise<GetUserResponse> => {
     try {
         const response = await apiClient.get(
             '/users',  // URLのパス部分
             {
                 params: {
-                    id: userId
+                    name: userName,
+                    password: userPass
                 }
             }
         );

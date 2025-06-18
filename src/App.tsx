@@ -3,6 +3,7 @@ import { HomePage } from './pages/home';
 import { UserLoginPage } from './pages/userLogin';
 import { ModelWeightInputPage } from './pages/modelWeightInput';
 import * as CurrentWeightInput from './pages/currentWeight';
+import { UserSignInPage } from './pages/userSignIn';
 // ナビゲーション用の簡単なスタイル
 const navStyle = {
   padding: '1rem',
@@ -19,10 +20,10 @@ export const App = () => {
     <>
       {/* 全ページ共通のナビゲーション */}
       <nav style={navStyle}>
-        <Link to="/users" style={linkStyle}>ログイン</Link>
-        <Link to="/model" style={linkStyle}>理想体重入力</Link>
+        <Link to="/users" style={linkStyle}>ログアウト</Link>
+        {/* <Link to="/model" style={linkStyle}>理想体重入力</Link>
         <Link to="/weight" style={linkStyle}>現在の体重入力</Link>
-        <Link to="/home" style={linkStyle}>ホーム</Link>
+        <Link to="/home" style={linkStyle}>ホーム</Link> */}
       </nav>
 
 
@@ -31,6 +32,7 @@ export const App = () => {
         <Routes>
           <Route path="/" element={<Navigate to="users" />} />
           <Route path="/users/" element={<UserLoginPage />} />
+          <Route path='/users/input' element={<UserSignInPage />} />
           <Route path="/model/:user_id" element={<ModelWeightInputPage />} />
           <Route path="/weight/:user_id/:model_id" element={<CurrentWeightInput.CalorieInputPage />} />
           <Route path="/home/:user_id" element={<HomePage />} />
