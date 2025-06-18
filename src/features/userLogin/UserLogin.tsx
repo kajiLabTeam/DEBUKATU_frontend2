@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router';
 import { postUser } from '../../api/putUserInput';
 import { getUser } from '../../api/getSpecificUser';
 import { GetUserResponse } from '../../types/user';
+import styles from './UserLogin.module.css';
 
 export const UserLogin = () => {
 	const [userNameText, setUserNameText] = useState("");
@@ -10,6 +11,12 @@ export const UserLogin = () => {
 	const [loading, setLoading] = useState(false);
 	const [error, setError] = useState<string | null>(null);
 	const navigate = useNavigate();
+
+	// disabled の状態に応じてクラス名を組み立てる
+	const buttonClasses = [
+		styles.loginButton, // 基本のボタンスタイル
+	].join(' '); // 配列をスペース区切りの文字列に変換
+
 
 	const onChangeUserText = (e: ChangeEvent<HTMLInputElement>) => {
 		setUserNameText(e.target.value);

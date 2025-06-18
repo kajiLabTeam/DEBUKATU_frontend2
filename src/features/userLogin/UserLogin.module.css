@@ -1,0 +1,60 @@
+/* ★追加: 入力欄とボタンを囲むコンテナのスタイル */
+.inputContainer {
+	display: flex;
+	/* 要素を横並びにする */
+	align-items: center;
+	/* 要素の縦方向の位置を中央に揃える */
+	gap: 8px;
+	/* 入力欄とボタンの間の隙間 */
+}
+
+/* ★追加: 入力欄のスタイル */
+.inputField {
+	flex-grow: 1;
+	/* コンテナの余白を埋めるように幅を自動調整 */
+	padding: 10px 15px;
+	/* ボタンと縦のpaddingを合わせる */
+	font-size: 16px;
+	/* ボタンとフォントサイズを合わせる */
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	box-sizing: border-box;
+	/* paddingとborderを要素の幅と高さに含める */
+}
+
+/* ログインボタンのスタイル（調整） */
+.loginButton {
+	width: auto;
+	background-color: #007bff;
+	color: white;
+	padding: 10px 15px;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 16px;
+	transition: background-color 0.2s ease-in-out;
+	flex-shrink: 0;
+	box-sizing: border-box;
+}
+
+/* ボタンにマウスが乗った時のスタイル */
+.loginButton:hover {
+	background-color: #0056b3;
+}
+
+/* ボタンがクリックされた時のスタイル */
+.loginButton:active {
+	background-color: #004085;
+}
+
+/* 無効時のスタイル */
+.disabled {
+	background-color: #cccccc;
+	color: #666666;
+	cursor: not-allowed;
+}
+
+/* 無効時にhoverしても色が変わらないようにする */
+.loginButton.disabled:hover {
+	background-color: #cccccc;
+}

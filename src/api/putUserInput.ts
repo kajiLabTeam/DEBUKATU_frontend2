@@ -27,7 +27,7 @@ export const postUserMock = async (userName: string): Promise<PostUserResponse> 
 }
 
 // 本物のAPIを叩く関数
-export const postUser = async (userName: string, userPass: string, userAge: string, userHeight: string): Promise<PostUserResponse> => {
+export const postUser = async (userName: string, userPass: string, userAge: string, userHeight: string, userGender: string): Promise<PostUserResponse> => {
   try {
     const response = await apiClient.post<PostUserResponse>(
       '/users',  // URLのパス部分
@@ -37,7 +37,8 @@ export const postUser = async (userName: string, userPass: string, userAge: stri
           name: userName,
           password: userPass,
           age: userAge,
-          height: userHeight
+          height: userHeight,
+          gender: userGender
         }
       }
     );
