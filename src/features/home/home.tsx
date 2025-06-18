@@ -2,7 +2,7 @@ import { Link, Navigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getMustCalorie } from '../caloriePerDay/userIdToMustCalorie';
 import { getCurrentModel } from '../../api/getCurrentModelData';
-
+import styles from './Home.module.css';
 
 export const Home = () => {
 	const { user_id: userIdStr } = useParams<{ user_id: string }>();
@@ -43,15 +43,22 @@ export const Home = () => {
 	// const [eatCount, setEatCount,] = useState("");//食事回数(出力)
 
 	return (
+		<div className={styles.homeContainer}>
+			<header className={styles.homeHeader}>
+				DEBUKATU
+			</header>
 
-		<div >
-			<ul>
-				<span>理想の体重までの1日の追加カロリー摂取量</span>
-				<span>{Math.floor(mustCalorie)}kcal</span>
-			</ul>
+			<main className={styles.mainContent}>
+				<div className={styles.weightPlanCard}>
+					<div className={styles.calorieItem}>
+						<span className={styles.label}>1日の追加カロリー</span>
+						<span className={styles.value}>{Math.floor(mustCalorie)}kcal</span>
+					</div>
+				</div>
+				<div><Link to={`/model/${userIdStr}`}>体重目標の入力へ</Link></div>
+				<div><Link to={`/weight/${userIdStr}/${modelId}`}>現在の体重の更新へ</Link></div>
+			</main>
+		</div>
 
-			<div><Link to={`/model/${userIdStr}`}>体重目標の入力へ</Link></div>
-			<div><Link to={`/weight/${userIdStr}/${modelId}`}>現在の体重の更新へ</Link></div>
-		</div >
 	);
 };
