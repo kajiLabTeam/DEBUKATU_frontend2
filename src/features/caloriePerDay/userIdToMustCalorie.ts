@@ -26,5 +26,5 @@ export async function getMustCalorie(userId: string) {
 
     console.log(modelDate, weightDate, diffDays);
     const mustPerCalorie = caloriePerDay(ModelWeight, CurrentWeight, days);
-    return { mustPerCalorie, Kisotaisya };
+    return { mustPerCalorie, Kisotaisya, days };
 }
