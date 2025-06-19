@@ -4,6 +4,7 @@ import { MockPostCurrentWeightByUserID } from '../../api/postCurrentWeightByMode
 import { PostCurrentWeightByUserID } from '../../api/postCurrentWeightByModelID';
 import { Navigate, useParams } from 'react-router';
 import { useNavigate } from 'react-router';
+import styles from './current.module.css';
 
 export const CurrentWeightInput = () => {
 	const [modelId, setModelId] = useState<number>(1);
@@ -40,24 +41,23 @@ export const CurrentWeightInput = () => {
 	};
 
 	return (
-		<div className="calorie_input_area">
-			<h2>現在体重の記録画面</h2>
-			<p className="title">現在体重の入力画面</p>
-			{/* <ul>
-				<li>ユーザID</li>
-				<>{userIdStr}</>
-				<li>モデルID</li>
-				<>{modelIdStr}</>
-			</ul> */}
-			<ul>
-				<li>現在の体重</li>
-				<input placeholder="40" value={currentWeight} onChange={onChangeCurrentWeight} />kg
-			</ul>
-			{/* <ul>
-				<li>現在のカロリー摂取量</li>
-				<input placeholder="100" value={currentCalorie} onChange={onChangeCurrentCalorie} />kcal
-			</ul> */}
-			<button onClick={onClickMemory}>記録</button>
+		<div className={styles.current}>
+
+			<header className={styles.currentHeader}>
+				DEBUKATU
+			</header>
+
+			<main className={styles.mainContent}>
+				<div className={styles.weightPlanCard}>
+					<p className="title">現在体重の入力</p>
+					<div className={styles.currentItem}>
+						<span className={styles.label}>現在体重</span>
+						<span className={styles.value}></span>
+						<input placeholder="40" value={currentWeight} onChange={onChangeCurrentWeight} />kg
+					</div>
+					<button onClick={onClickMemory}>記録</button>
+				</div>
+			</main>
 		</div>
 	);
 };

@@ -1,7 +1,7 @@
 /* Home.module.css (例) */
 
 /* 全体のコンテナ（画像全体を囲む部分） */
-.userLoginContainer {
+.userFormContainer {
 	background-color: #e7f5ed;
 	/* 全体の背景色 */
 	min-height: 100vh;
@@ -14,7 +14,7 @@
 }
 
 /* ヘッダーのスタイル */
-.userLoginHeader {
+.userFormHeader {
 	background-color: #2c7a51;
 	/* 濃い緑色の背景 */
 	color: white;

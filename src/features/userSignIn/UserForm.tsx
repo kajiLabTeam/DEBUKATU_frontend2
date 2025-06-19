@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router';
 import { postUser } from '../../api/putUserInput';
+import styles from './userForm.module.css';
 
 export const UserForm = () => {
     const [userNameText, setUserNameText] = useState("");

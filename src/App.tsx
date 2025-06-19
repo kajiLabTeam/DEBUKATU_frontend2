@@ -18,16 +18,6 @@ const linkStyle = {
 export const App = () => {
   return (
     <>
-      {/* 全ページ共通のナビゲーション */}
-      <nav style={navStyle}>
-        <Link to="/users" style={linkStyle}>ログアウト</Link>
-        {/* <Link to="/model" style={linkStyle}>理想体重入力</Link>
-        <Link to="/weight" style={linkStyle}>現在の体重入力</Link>
-        <Link to="/home" style={linkStyle}>ホーム</Link> */}
-      </nav>
-
-
-      {/* メインコンテンツエリア */}
       <main>
         <Routes>
           <Route path="/" element={<Navigate to="users" />} />
@@ -38,6 +28,12 @@ export const App = () => {
           <Route path="/home/:user_id" element={<HomePage />} />
         </Routes>
       </main>
+      <footer>
+
+        <nav style={navStyle}>
+          <Link to="/users" style={linkStyle}>ログアウト</Link>
+        </nav>
+      </footer>
     </>
 
 
