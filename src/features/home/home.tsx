@@ -8,6 +8,7 @@ export const Home = () => {
 	const { user_id: userIdStr } = useParams<{ user_id: string }>();
 
 	const [mustCalorie, setMustCalorie] = useState<number | null>(null);
+	const [kisotaisya, setKisotaisya] = useState<number | null>(null);
 	const [modelId, setModelId] = useState<string | null>(null);
 	const [error, setError] = useState<string | null>(null);
 
@@ -19,7 +20,8 @@ export const Home = () => {
 		const fetchData = async () => {
 			try {
 				const cal = await getMustCalorie(userIdStr);
-				setMustCalorie(cal);
+				setMustCalorie(cal.mustPerCalorie);
+				setKisotaisya(cal.Kisotaisya);
 
 				const model = await getCurrentModel(userIdStr);
 				setModelId(model.ModelId);
@@ -46,8 +48,22 @@ export const Home = () => {
 
 		<div >
 			<ul>
-				<span>理想の体重までの1日の追加カロリー摂取量</span>
-				<span>{Math.floor(mustCalorie)}kcal</span>
+				<li>
+					<span>理想の体重までの1日の追加カロリー摂取量</span>
+					<span>{Math.floor(mustCalorie)}kcal</span>
+				</li>
+				<li>+</li>
+				<li>
+					<span>基礎代謝量</span>
+					<span>{kisotaisya !== null ? Math.floor(kisotaisya) : "計算中..."}</span>
+				</li>
+				<li>↓</li>
+				<li>
+					<span>最低限摂取すべきカロリー</span>
+					<span>{(mustCalorie !== null && kisotaisya !== null)
+						? Math.floor(mustCalorie + kisotaisya)
+						: "計算中..."}</span>
+				</li>
 			</ul>
 
 			<div><Link to={`/model/${userIdStr}`}>体重目標の入力へ</Link></div>
