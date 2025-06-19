@@ -2,7 +2,7 @@ import { Link, Navigate, useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { getMustCalorie } from '../caloriePerDay/userIdToMustCalorie';
 import { getCurrentModel } from '../../api/getCurrentModelData';
-import styles from './Home.module.css';
+import styles from './home.module.css';
 
 
 export const Home = () => {
