@@ -50,25 +50,45 @@ export const UserForm = () => {
 
 
     return (
-        <div >
-            <div><Link to={`/users`}>戻る</Link></div>
-            <p className="title">ユーザ登録</p>
-            <p className="title">ユーザ名</p>
-            <input placeholder="ユーザ名を入力" value={userNameText} onChange={onChangeUserNameText} />
-            <p className="title">パスワード</p>
-            <input placeholder="パスワードを入力" value={userPassText} onChange={onChangeUserPassText} />
-            <p className="title">年齢</p>
-            <input placeholder="年齢を入力" value={userAgeText} onChange={onChangeUserAgeText} />才
-            <p className="title">性別</p>
-            <label>
-                <input type="radio" value="man" checked={gender === "man"} onChange={onChangeGender} />男性
-            </label>
-            <label>
-                <input type="radio" value="woman" checked={gender === "woman"} onChange={onChangeGender} />女性
-            </label>
-            <p className="title">身長</p>
-            <input placeholder="身長を入力" value={userHeightText} onChange={onChangeUserHeightText} />cm<br></br>
-            <button onClick={onClickInput}>登録</button>
-        </div >
+        <div className={styles.userForm}>
+
+            <header className={styles.userFormHeader}>
+                DEBUKATU
+            </header>
+            <main className={styles.mainContent}>
+                <div className={styles.weightPlanCard}>
+                    <p className="title">ユーザ登録</p>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>ユーザ名</span>
+                        <input placeholder="ユーザ名を入力" value={userNameText} onChange={onChangeUserNameText} />
+                    </div>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>パスワード</span>
+                        <input placeholder="パスワードを入力" value={userPassText} onChange={onChangeUserPassText} />
+                    </div>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>年齢</span>
+                        <input placeholder="年齢を入力(歳)" value={userAgeText} onChange={onChangeUserAgeText} />
+                    </div>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>性別 </span>
+
+                        <label>
+                            <input type="radio" value="man" checked={gender === "man"} onChange={onChangeGender} />男性
+                        </label>
+                        <label>
+                            <input type="radio" value="woman" checked={gender === "woman"} onChange={onChangeGender} />女性
+                        </label>
+                    </div>
+                    <div className={styles.inputGroup}>
+                        <span className={styles.label}>身長</span>
+                        <input placeholder="身長を入力 (cm)" value={userHeightText} onChange={onChangeUserHeightText} />
+                    </div>
+                    <button onClick={onClickInput}>登録</button>
+                </div>
+                <div><Link to={`/users`}>戻る</Link></div>
+            </main>
+        </div>
+
     )
 }

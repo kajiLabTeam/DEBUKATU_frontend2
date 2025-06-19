@@ -65,11 +65,8 @@ export const UserLogin = () => {
 					<button onClick={onClickLogin}>ログイン</button>
 
 				</div>
-			</main>
-
-			<footer>
 				<div><Link to={`/users/input`}>ユーザ登録へ</Link></div>
-			</footer>
+			</main>
 		</div >
 
 	)
