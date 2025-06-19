@@ -5,14 +5,14 @@ import { getCurrentModel } from "../../api/getCurrentModelData";
 import { getCurrentWeight } from "../../api/getCurrentWeightData";
 import { caloriePerDay } from "./caloriePerDay";
 
-export async function getMustCalorie(userId: string): Promise<number> {
+export async function getMustCalorie(userId: string) {
     //最新Model_Data取得
     const model = await getCurrentModel(userId);
     const { ModelId, ModelWeight, LengthOfDays, CreatedDate: modelCreatedDate } = model;
 
     //対応するWeight_Dataのうち最新のものを取得
     const weight = await getCurrentWeight(userId, ModelId);
-    const { CurrentWeight, CreatedDate: weightCreatedDate } = weight;
+    const { CurrentWeight, CreatedDate: weightCreatedDate, Kisotaisya } = weight;
 
     const modelDate = new Date(modelCreatedDate);
     const weightDate = new Date(weightCreatedDate);
@@ -26,5 +26,5 @@ export async function getMustCalorie(userId: string): Promise<number> {
 
     console.log(modelDate, weightDate, diffDays);
     const mustPerCalorie = caloriePerDay(ModelWeight, CurrentWeight, days);
-    return mustPerCalorie;
+    return { mustPerCalorie, Kisotaisya };
 }
